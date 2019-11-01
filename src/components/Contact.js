@@ -10,6 +10,10 @@ class Contact extends Component {
   };
   }
 
+  onDeleteContact = ()=>{
+    this.props.onDeleteContactHandler();
+  }
+
   onShowClick = (e)=>{
     this.setState({
       showContactInfo: !this.state.showContactInfo
@@ -23,7 +27,8 @@ class Contact extends Component {
       <div className="card card-body mb-3">
         <h4> 
           {name}
-          <i onClick={this.onShowClick} className="fas fa-short-down">  +</i>
+          <i onClick={this.onShowClick} className="fas fa-short-down" style={{ cursor: 'pointer'}}>  +</i>
+          <i onClick={this.onDeleteContact} className="fas fa-times" style={{ cursor: 'pointer',color: 'red', float: 'right' }}>  -</i>
          </h4>
          {
            showContactInfo ? (

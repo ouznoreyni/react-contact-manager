@@ -27,6 +27,14 @@ class Contacts extends Component {
     }
   }
 
+  deletContact = (id)=>{
+    const {contacts} = this.state;
+    const newContact = contacts.filter(contact => contact.id !== id)
+    this.setState({
+        contacts:newContact
+      })
+  }
+
   render() {
     const {contacts} = this.state;
     return (
@@ -36,6 +44,7 @@ class Contacts extends Component {
             <Contact
               key={contact.id}
               contact={contact}
+              onDeleteContactHandler = {this.deletContact.bind(this, contact.id)}
             />
           ))
         }
