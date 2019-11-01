@@ -7,7 +7,8 @@ function App() {
   return (
     <div className="">
       <Header  branding="Acme Contact Manager"/>
-      <Contact 
+      <div className="container">
+        <Contact 
         name="john Doe"
         email="jdoe@gmail.com"
         phone="444-222-444"
@@ -17,6 +18,7 @@ function App() {
         email="ksmith@gmail.com"
         phone="444-222-444"
       />
+      </div>
     </div>
   );
 }
