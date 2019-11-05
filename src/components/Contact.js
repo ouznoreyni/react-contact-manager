@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import {Consumer} from '../context';
 
 
 class Contact extends Component {
@@ -10,8 +11,8 @@ class Contact extends Component {
   };
   }
 
-  onDeleteContact = ()=>{
-    this.props.onDeleteContactHandler();
+  onDeleteContact = (id, dispatch)=>{
+    dispatch({type:'DELETE_CONTACT', payload: id})
   }
 
   onShowClick = (e)=>{
@@ -21,14 +22,18 @@ class Contact extends Component {
   }
 
   render() {
-    const {name, email, phone} = this.props.contact;
+    const {id, name, email, phone} = this.props.contact;
     const {showContactInfo} = this.state;
     return (
-      <div className="card card-body mb-3">
+      <Consumer>
+        {value =>{
+          const {dispatch} = value
+          return (
+            <div className="card card-body mb-3">
         <h4> 
           {name}
           <i onClick={this.onShowClick} className="fas fa-short-down" style={{ cursor: 'pointer'}}>  +</i>
-          <i onClick={this.onDeleteContact} className="fas fa-times" style={{ cursor: 'pointer',color: 'red', float: 'right' }}>  -</i>
+          <i onClick={this.onDeleteContact.bind(this.setState, id, dispatch)} className="fas fa-times" style={{ cursor: 'pointer',color: 'red', float: 'right' }}>  -</i>
          </h4>
          {
            showContactInfo ? (
@@ -39,6 +44,10 @@ class Contact extends Component {
            ):null
          }
       </div>
+          )
+        }}
+      </Consumer>
+      
     )
   }
 }
