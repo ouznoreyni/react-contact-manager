@@ -9,13 +9,13 @@ const Header = (props) => {
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/" className="nav-link"><i class="fas fa-home" ></i> Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/contact/add" className="nav-link">Add contact</Link>
+              <Link to="/contact/add" className="nav-link"><i class="fas fa-plus" ></i> Add contact</Link>
             </li>
             <li className="nav-item">
-              <Link to="/about" className="nav-link">about</Link>
+              <Link to="/about" className="nav-link"><i class="fas fa-question" ></i> about</Link>
             </li>
           </ul>
         </div>
